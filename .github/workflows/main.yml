@@ -34,8 +34,11 @@ jobs:
         # commit include '--latest'
       - name: Npm publish latest
         if: "contains(github.event.head_commit.message, '--latest')"
-        run: 
-          cd ./dist/render \
+        # run: 
+        #   cd ./dist/render \
+        #   echo Npm publish latest!
+          run: |
+          cd ./dist/render,
           echo Npm publish latest!
       
         # commit include '--next'
