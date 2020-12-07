@@ -37,7 +37,7 @@ jobs:
         # run: 
         #   cd ./dist/render \
         #   echo Npm publish latest!
-          run: |
+        run: |
           cd ./dist/render,
           echo Npm publish latest!
       
