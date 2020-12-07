@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: RenderPublishNpm
 
 # Controls when the action will run. 
 on:
@@ -26,18 +26,28 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
+      # Install dependency
+      - name: Install dependency
+        run: npm install @neux/ui@next && npm install
+
+      # Npm publish
+        # commit include '--latest'
       - name: Npm publish latest
         if: "contains(github.event.head_commit.message, '--latest')"
-        run: echo Npm publish latest!
+        run: 
+          cd ./dist/render \
+          echo Npm publish latest!
       
+        # commit include '--next'
       - name: Npm publish next
         if: "contains(github.event.head_commit.message, '--next')"
-        run: echo Npm publish next!
+        run: 
+          cd ./dist/render \
+          echo Npm publish next!
       
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      # - name: Run a multi-line script
+      #   run: |
+      #     echo Add other actions to build,
+      #     echo test, and deploy your project.
